@@ -1,4 +1,4 @@
-function [OutputMap] = analyze( imPath )
+function [OutputMap, a, b] = ELAanalyze( imPath )
     %ANALYZE Summary of this function goes here
     %   Detailed explanation goes here
     im=CleanUpImage(imPath);
@@ -7,5 +7,7 @@ function [OutputMap] = analyze( imPath )
     Flatten=true;
     
     OutputMap = ELA(im,Quality,Multiplier,Flatten);
+    a = 0;
+    b = 0;
 end
 

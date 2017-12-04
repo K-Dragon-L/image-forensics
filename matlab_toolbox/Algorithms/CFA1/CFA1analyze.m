@@ -1,4 +1,4 @@
-function [OutputMap] = analyze( imPath )
+function [OutputMap, stat, a] = CFA1analyze( imPath )
     %ANALYZE Summary of this function goes here
     %   Detailed explanation goes here
     im=CleanUpImage(imPath);
@@ -13,4 +13,5 @@ function [OutputMap] = analyze( imPath )
     % estimate the Bayer array
     [bayer, F1]=GetCFAArray(ImageIn);
     [OutputMap, stat] = CFAloc(ImageIn, bayer, Nb,Ns);
+    a = 0;
 end

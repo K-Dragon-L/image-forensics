@@ -1,4 +1,4 @@
-function [OutputMap] = analyze( imPath )
+function [OutputMap, a, b] = BLKanalyze( imPath )
     % Copyright (C) 2016 Markos Zampoglou
     % Information Technologies Institute, Centre for Research and Technology Hellas
     % 6th Km Harilaou-Thermis, Thessaloniki 57001, Greece
@@ -13,4 +13,6 @@ function [OutputMap] = analyze( imPath )
     %Markos Zampoglou: wrote a new implementation which is significantly 
     %faster with negligible differences in the output.
     OutputMap = GetBlockGrid(im);
+    a = 0;
+    b = 0;
 end

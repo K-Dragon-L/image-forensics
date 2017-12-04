@@ -1,4 +1,4 @@
-function [OutputMap] = analyze( imPath )
+function [OutputMap, a, b] = NOI4analyze( imPath )
     %ANALYZE Summary of this function goes here
     %   Detailed explanation goes here
 
@@ -8,4 +8,6 @@ function [OutputMap] = analyze( imPath )
 
     im=CleanUpImage(imPath);
     OutputMap = MedFiltForensics(im, NSize, Multiplier, Flatten);
+    a = 0;
+    b = 0;
 end

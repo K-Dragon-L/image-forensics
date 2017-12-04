@@ -1,4 +1,4 @@
-function [OutputMap] = analyze( imPath )
+function [OutputMap, a, b] = DCTanalyze( imPath )
     %ANALYZE Summary of this function goes here
     %   Detailed explanation goes here
     try
@@ -10,5 +10,7 @@ function [OutputMap] = analyze( imPath )
         im=CleanUpImage(imPath);
     end
     OutputMap = GetDCTArtifact(im);
+    a = 0;
+    b = 0;
 end
 

@@ -1,4 +1,4 @@
-function [OutputMap] = analyze( imPath )
+function [OutputMap, a, b] = GHOanalyze( imPath )
     %ANALYZE Summary of this function goes here
     %   Detailed explanation goes here
     im=CleanUpImage(imPath);
@@ -6,5 +6,7 @@ function [OutputMap] = analyze( imPath )
     smoothFactor=1;
     [OutputX, OutputY, dispImages, imin, Qualities, Mins]=Ghost(im, checkDisplacements);
     OutputMap = dispImages;
+    a = 0;
+    b = 0;
 end
 

@@ -1,4 +1,4 @@
-function [ OutputMap ] = analyze( imPath )
+function [ OutputMap, a, b ] = NADQanalyze( imPath )
     %ANALYZE Summary of this function goes here
     %   Detailed explanation goes here
     im=jpeg_read(imPath);
@@ -6,5 +6,7 @@ function [ OutputMap ] = analyze( imPath )
     
     [LLRmap, LLRmap_s, q1table, k1e, k2e, alphat] = getJmapNA_EM(im, 1, c2);
     OutputMap = imfilter(sum(LLRmap,3), ones(3), 'symmetric', 'same');
+    a = 0;
+    b = 0;
 end
 

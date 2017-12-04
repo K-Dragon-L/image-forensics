@@ -1,4 +1,4 @@
-function OutputMap = analyze( imPath )
+function [OutputMap, a, b] = NOI2analyze( imPath )
     % the algorithm has very high memory requirements. This is the maximum
     % number of elements (M*N*3) in an image for which we use a RAM-based
     % implementation. Above that, we switch to a slower, HDD-based method
@@ -13,4 +13,6 @@ function OutputMap = analyze( imPath )
                          %  supported types, "dct", "haar", "rand"
     im=CleanUpImage(imPath);
     OutputMap = GetNoiseMaps(im, sizeThreshold, filter_type, filter_size, block_rad);
+    a = 0;
+    b = 0;
 end
