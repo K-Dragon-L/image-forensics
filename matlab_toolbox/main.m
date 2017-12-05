@@ -1,8 +1,8 @@
 clear all; close all;
 
 addpath(genpath('/Users/austinmcever/School/Fall 17/ECE278/proj2/image-forensics/matlab_toolbox'));
-path_to_img = '/Users/christianlee/Downloads/ForensicsProjectImages-20171129/monk_base.jpg';
-nfuncs = 10;
+path_to_img = '/Users/christianlee/Downloads/Forensics Test Data -20171204/test11.png';
+nfuncs = 7;
 
 funcs_cell = cell(nfuncs, 1);
 funcs_cell{1}  =  @ADQ1analyze;
@@ -17,9 +17,9 @@ funcs_cell{6}  = @DCTanalyze;
 funcs_cell{7} = @ELAanalyze;
 %funcs_cell{8} = @GHOanalyze;
 %funcs_cell{8} = @NADQanalyze;
-funcs_cell{8} = @NOI1analyze;
-funcs_cell{9} = @NOI2analyze;
-funcs_cell{10} = @NOI4analyze;
+%funcs_cell{8} = @NOI1analyze;
+%funcs_cell{9} = @NOI2analyze;
+%funcs_cell{10} = @NOI4analyze;
 
 maps = cell(nfuncs, 1);
 binary_maps = cell(nfuncs, 1);
@@ -41,11 +41,13 @@ for i = 1:length(funcs_cell)
     end
     connectivity{i} = bwconncomp(binary_maps{i}, 8);
     numPixels{i} = cellfun(@numel,connectivity{i}.PixelIdxList);
-    if numPixels{i} > 0.8 * m * n
+    if max(numPixels{i}) >  (0.3 * m * n)
         score{i} = 0;
     elseif connectivity{i}.NumObjects >= 10
         score{i} = 0;
-    elseif numPixels{i} < 0.1 * m * n
+    elseif max(numPixels{i}) < (0.01 * m * n)
         score{i} = 0;
+    else
+        score{i} = max(numPixels{i}) / (m*n) / connectivity{i}.NumObjects * 3;
     end
 end
