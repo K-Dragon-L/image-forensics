@@ -6,5 +6,5 @@
 
 close all; clear all;
 im1='demo.tiff';
-OutputMap = analyze(im1);
+OutputMap = CFA1analyze(im1);
 imagesc(OutputMap);

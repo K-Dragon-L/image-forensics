@@ -2,12 +2,14 @@ function f = test_method(im, verbose, analyze)
 addpath(genpath('/Users/austinmcever/School/Fall 17/ECE278/proj2/image-forensics/matlab_toolbox'));
 [OutputMap, ~, ~] = analyze(im);
 if verbose
+    figure;
     subplot(2,1,1);
     imshow(CleanUpImage(im));
     subplot(2,1,2);
     imagesc(OutputMap);
+    title(analyze);
 end
-    
+
 OutputMap = OutputMap/max(OutputMap(:));
 
 OutputMap = imgaussfilt(OutputMap, 2);
